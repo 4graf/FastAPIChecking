@@ -1,0 +1,2 @@
+# FastAPIChecking
+FastAPI - Yes!
