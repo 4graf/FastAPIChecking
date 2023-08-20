@@ -40,3 +40,11 @@ except Exception as exc:
 engine = create_engine(DB_FULL_URL)
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
+
+
+def get_db():
+    db = Session()
+    try:
+        yield db
+    finally:
+        db.close()

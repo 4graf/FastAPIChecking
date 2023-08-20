@@ -1,9 +1,7 @@
+import logging_config
 import logging
-logging.basicConfig(format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
-                    level=logging.INFO, filename='default.log', filemode='a')
-
-import database
-
+from database import Base, engine
+import models
 
 if __name__ == "__main__":
-    logging.info('Hello, log!')
+    Base.metadata.create_all(bind=engine)
