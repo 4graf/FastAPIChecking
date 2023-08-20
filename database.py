@@ -31,7 +31,11 @@ except ProgrammingError as exc:
     if 'DuplicateDatabase' in exc.args[0]:  # check psycopg2 error
         logging.info(f'Database {DB_NAME} exist. Create session')
     else:
+        logging.critical(exc, exc_info=True)
         raise exc
+except Exception as exc:
+    logging.critical(exc, exc_info=True)
+    raise exc
 
 engine = create_engine(DB_FULL_URL)
 Session = sessionmaker(bind=engine)
