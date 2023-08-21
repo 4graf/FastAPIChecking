@@ -2,9 +2,10 @@ import os
 import logging
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
 from sqlalchemy.exc import ProgrammingError
+from sqlalchemy.ext.declarative import as_declarative
 
 log = logging.getLogger(__name__)
 
@@ -39,7 +40,11 @@ except Exception as exc:
 
 engine = create_engine(DB_FULL_URL)
 Session = sessionmaker(bind=engine)
-Base = declarative_base()
+
+
+@as_declarative()
+class Base:
+    pass
 
 
 def get_db():
