@@ -48,8 +48,8 @@ class Base:
 
 
 def get_db():
-    db = Session()
     try:
+        db = Session()
         yield db
     finally:
         db.close()
