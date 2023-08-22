@@ -9,7 +9,7 @@ class ClientBase(BaseModel):
     name: Optional[str] = None
     email: Optional[str] = None
     phone: Optional[str] = None
-    date_registration: Optional[datetime] = None
+    # date_registration: Optional[datetime] = None
 
 
 class ClientCreate(ClientBase):
@@ -29,7 +29,7 @@ class ClientInDBBase(ClientBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Client(ClientInDBBase):
