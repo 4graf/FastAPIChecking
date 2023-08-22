@@ -18,7 +18,7 @@ class Client(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(80), nullable=False)
     email: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
-    phone: Mapped[str] = mapped_column(String(20))
+    phone: Mapped[str] = mapped_column(String(20), nullable=True)
     date_registration: Mapped[datetime] = mapped_column(default=datetime.now())
 
     product: Mapped[list['Product']] = relationship(secondary='rent', back_populates='client')
